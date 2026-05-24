@@ -32,7 +32,7 @@ export function CTA() {
                     </Link>
                   </Button>
                   <Button asChild variant="ghost" size="lg">
-                    <Link href="mailto:hello@nvsbl.systems">
+                    <Link href="mailto:nvsbl@monospace.studio">
                       <Mail className="mr-2 h-4 w-4" />
                       Email us
                     </Link>

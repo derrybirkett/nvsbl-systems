@@ -15,9 +15,9 @@ const footerLinks = {
   ],
   connect: [
     { label: "Contact", href: "/contact" },
-    { label: "LinkedIn", href: "https://linkedin.com", external: true },
-    { label: "Twitter / X", href: "https://twitter.com", external: true },
-    { label: "GitHub", href: "https://github.com", external: true },
+    { label: "LinkedIn", href: "https://linkedin.com/in/derrybirkett", external: true },
+    { label: "Twitter / X", href: "https://twitter.com/derrybirkett", external: true },
+    { label: "GitHub", href: "https://github.com/derrybirkett", external: true },
   ],
 };
 
@@ -115,6 +115,17 @@ export function Footer() {
             </p>
             {/* Black square mark */}
             <div className="h-3 w-3 bg-foreground" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground">
+              A project of{" "}
+              <a
+                href="https://monospace.studio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-foreground"
+              >
+                Monospace.Studio
+              </a>
+            </p>
           </div>
           <div className="flex gap-6">
             <Link

@@ -321,10 +321,10 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
                   <a
-                    href="mailto:hello@nvsbl.systems"
+                    href="mailto:nvsbl@monospace.studio"
                     className="font-medium transition-colors hover:text-primary"
                   >
-                    hello@nvsbl.systems
+                    nvsbl@monospace.studio
                   </a>
                 </div>
               </div>
@@ -335,7 +335,7 @@ export default function ContactPage() {
                 <p className="text-sm text-muted-foreground mb-3">Connect</p>
                 <div className="flex gap-3">
                   <a
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/in/derrybirkett"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-lg border border-border transition-colors hover:border-primary/50 hover:text-primary"
@@ -344,7 +344,7 @@ export default function ContactPage() {
                     <span className="sr-only">LinkedIn</span>
                   </a>
                   <a
-                    href="https://twitter.com"
+                    href="https://twitter.com/derrybirkett"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-lg border border-border transition-colors hover:border-primary/50 hover:text-primary"
@@ -353,7 +353,7 @@ export default function ContactPage() {
                     <span className="sr-only">Twitter</span>
                   </a>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/derrybirkett"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-lg border border-border transition-colors hover:border-primary/50 hover:text-primary"

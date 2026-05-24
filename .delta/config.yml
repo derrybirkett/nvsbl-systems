@@ -1,0 +1,71 @@
+product:
+  name: NVSBL.SYSTEMS
+  vision: >
+    Marketing and conversion site for NVSBL — a small senior consultancy that designs,
+    builds, and productizes agentic middleware for enterprise clients. The site's job
+    is to earn trust and convert visitors into discovery call bookings. All content is
+    hardcoded TypeScript (no CMS, no database). Copy quality is as load-bearing as code
+    quality — every word should sound like it was written by someone who has shipped
+    production software for twenty-five years.
+  target_user: >
+    Engineering leaders, CTOs, and heads of product at B2B companies who have a real
+    agentic workflow problem and budget to solve it. They are skeptical of hype,
+    technically literate, and will read the detail if it earns their attention.
+  principles:
+    - every page has one clear next action (usually "book a call")
+    - copy earns trust by being specific, not by being enthusiastic
+    - dark aesthetic, precise mono/sans typography — nothing decorative that isn't load-bearing
+    - static and fast — no client-side data fetching, no unnecessary interactivity
+    - animations serve orientation, not decoration — use AnimatedSection / StaggerContainer from components/ui/motion.tsx
+    - new shadcn/ui components are fine; new npm packages require a strong reason
+  avoid:
+    - adding a CMS, database, or any server-side data layer
+    - light mode or theme switching
+    - generic "AI company" aesthetic (gradients for the sake of gradients, robot icons)
+    - pages or sections without a conversion path
+    - copy that sounds like a press release or a VC pitch deck
+    - placeholder content committed to main
+
+stack:
+  framework: nextjs
+  language: typescript
+  styling: tailwind
+  component_library: shadcn-ui
+  animation: framer-motion
+  package_manager: pnpm
+  testing: none
+  deploy: vercel
+  allowed_deps:
+    - lucide-react
+    - framer-motion
+    - shadcn/ui primitives (via `pnpm dlx shadcn@latest add <component>`)
+  avoid_deps:
+    - any CMS SDK
+    - any database client
+    - react-query or SWR (no async data fetching needed)
+
+content:
+  services:
+    - slug: strategy
+    - slug: design
+    - slug: build
+    - slug: products
+  case_studies:
+    - slug: nvsbl-dev
+    - slug: nvsbl-app
+  routes:
+    - /
+    - /approach
+    - /services
+    - /services/[slug]
+    - /work
+    - /work/[slug]
+    - /about
+    - /contact
+    - /privacy
+    - /terms
+  email: nvsbl@monospace.studio
+  social:
+    linkedin: https://linkedin.com/in/derrybirkett
+    twitter: https://twitter.com/derrybirkett
+    github: https://github.com/derrybirkett
