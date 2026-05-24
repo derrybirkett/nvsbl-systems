@@ -1,0 +1,15 @@
+[submodule "council"]
+	path = council
+	url = https://github.com/derrybirkett/council
+[submodule "delta"]
+	path = delta
+	url = https://github.com/derrybirkett/delta
+[submodule "merge"]
+	path = merge
+	url = https://github.com/derrybirkett/merge
+[submodule "ledger"]
+	path = ledger
+	url = https://github.com/derrybirkett/ledger
+[submodule "curator"]
+	path = curator
+	url = https://github.com/derrybirkett/curator
