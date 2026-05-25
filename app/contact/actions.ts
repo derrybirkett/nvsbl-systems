@@ -6,7 +6,7 @@ type SubmitResult =
   | { ok: true }
   | { ok: false; error: string };
 
-const TO_ADDRESS = "nvsbl@monospace.studio";
+const TO_ADDRESS = process.env.CONTACT_TO_ADDRESS ?? "nvsbl@monospace.studio";
 const FROM_ADDRESS = process.env.CONTACT_FROM_ADDRESS ?? "NVSBL.SYSTEMS <onboarding@resend.dev>";
 
 function escapeHtml(str: string) {
