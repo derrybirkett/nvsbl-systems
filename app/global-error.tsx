@@ -19,8 +19,8 @@ export default function GlobalError({
             margin: 0;
             font-family: ui-monospace, monospace;
             padding: 2rem;
-            background: #fafafa;
-            color: #171717;
+            background: #0a0a0c;
+            color: #ededed;
             font-size: 14px;
             min-height: 100vh;
             display: flex;
@@ -40,8 +40,8 @@ export default function GlobalError({
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #fef2f2;
-            color: #b91c1c;
+            background: #2a0e10;
+            color: #f87171;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -55,14 +55,15 @@ export default function GlobalError({
             line-height: 1.5;
           }
           .error-message code {
-            background: #e5e5e5;
+            background: #1f1f23;
             padding: 0.1em 0.3em;
+            border-radius: 3px;
           }
           .error-summary {
             margin: 0.25rem 0 0 2rem;
             padding: 0;
             font-size: 13px;
-            color: #b91c1c;
+            color: #f87171;
             line-height: 1.5;
           }
           .error-details-wrapper {
@@ -72,7 +73,7 @@ export default function GlobalError({
             list-style: none;
             cursor: pointer;
             padding: 0;
-            color: #737373;
+            color: #a3a3a3;
             font-size: 12px;
             user-select: none;
             display: flex;
@@ -102,7 +103,9 @@ export default function GlobalError({
           .error-stack {
             margin: 0;
             padding: 1rem;
-            background: #f5f5f5;
+            background: #15151a;
+            color: #d4d4d8;
+            border-radius: 4px;
             overflow: auto;
             max-width: 100%;
             min-width: 0;
@@ -127,7 +130,7 @@ export default function GlobalError({
           <div className="error-summary">
             {error.message || 'Unknown error'}
           </div>
-          {error.stack && (
+          {process.env.NODE_ENV !== 'production' && error.stack && (
             <div className="error-details-wrapper">
               <details className="error-details">
                 <summary>

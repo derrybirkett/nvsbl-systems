@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, Send, CheckCircle, Linkedin, Twitter, Github, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection, StaggerContainer, AnimatedItem } from "@/components/ui/motion";
+import { submitContactForm } from "./actions";
 
 interface FormData {
   name: string;
@@ -31,6 +32,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Load Cal.com embed script
   useEffect(() => {
@@ -78,9 +80,14 @@ export default function ContactPage() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setSubmitError(null);
+    const result = await submitContactForm(formData);
     setIsSubmitting(false);
-    setIsSubmitted(true);
+    if (result.ok) {
+      setIsSubmitted(true);
+    } else {
+      setSubmitError(result.error);
+    }
   };
 
   const handleChange = (
@@ -283,6 +290,12 @@ export default function ContactPage() {
                     className="w-full rounded-lg border border-border bg-background px-4 py-3 transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
+
+                {submitError && (
+                  <div className="rounded-lg border border-red-500/50 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                    {submitError}
+                  </div>
+                )}
 
                 {/* Submit */}
                 <Button
