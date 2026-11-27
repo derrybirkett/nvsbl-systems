@@ -12,6 +12,10 @@ pnpm lint       # eslint
 
 No test suite is configured.
 
+## Direction
+
+NVSBL.SYSTEMS is becoming the standards-to-agents business: read `MISSION.md` and `docs/2026-11-27-open-registry.md` first. This repo is public (open standards); the business model, pricing and agents live in the private `nvsbl-systems-agents` repo. Keep those out of this one. The architecture below describes the current marketing site, which stays live until the new direction ships something.
+
 ## Architecture
 
 This is the **NVSBL.SYSTEMS marketing site** — a Next.js 16 App Router project deploying to Vercel. It's a static/SSG site with no backend, no database, and no CMS. All content lives as hardcoded TypeScript data objects inside the page files.
