@@ -45,6 +45,7 @@ export function Footer() {
               The layer underneath the agents. Twenty-five years of solution design, now applied to the
               agentic stack.
             </p>
+            <p className="mt-4 text-[13px] text-brand">Good design is NVSBL.</p>
           </div>
 
           {columns.map((col) => (
@@ -71,7 +72,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col justify-between gap-4 border-t border-border pt-8 md:flex-row md:items-center">
           <p className="meta">
-            &copy; {new Date().getFullYear()} NVSBL.SYSTEMS · A sibling of monospace.studio
+            &copy; {new Date().getFullYear()} NVSBL.SYSTEMS · A trademark of monospace.studio
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="meta hover:text-foreground">
