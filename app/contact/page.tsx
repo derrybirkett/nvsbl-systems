@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Mail, Send, CheckCircle, Linkedin, Twitter, Github, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedSection, StaggerContainer, AnimatedItem } from "@/components/ui/motion";
 import { submitContactForm } from "./actions";
 
 interface FormData {
@@ -101,74 +98,62 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen pt-24">
+    <main className="min-h-screen pt-[var(--space-8)]">
       {/* Hero */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h1 className="text-[length:var(--type-h1)] leading-[1.15]">
               Tell us about your problem.
             </h1>
-            <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            <p className="mt-6 text-xl text-ink-soft leading-relaxed max-w-2xl">
               The fastest way to start is a thirty-minute discovery call. We&apos;ll 
               listen. If we&apos;re a fit, we&apos;ll tell you what an engagement would 
               look like. If we&apos;re not, we&apos;ll point you at someone who is.
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Calendar booking */}
-      <section className="pb-16 lg:pb-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="rounded-xl border border-border bg-card p-8 text-center">
-              <div className="flex h-16 w-16 mx-auto items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
-                <Calendar className="h-8 w-8" />
-              </div>
-              <h2 className="text-xl font-semibold mb-2">Book a Discovery Call</h2>
-              <p className="text-muted-foreground mb-6">
+      <section className="pb-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <div className="rounded-sm border border-border bg-card p-8 text-center">
+              <h2 className="text-[length:var(--type-h3)] mb-2">Book a Discovery Call</h2>
+              <p className="text-ink-soft mb-6">
                 Thirty minutes. We&apos;ll listen, ask questions, and tell you honestly whether we can help.
               </p>
               <Button 
                 size="lg"
-                className="gap-2 glow-cyan"
+                className="gap-2"
                 data-cal-link="dbrktt/30min"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
+                data-cal-config='{"layout":"month_view","theme":"auto"}'
                 onClick={openCalModal}
               >
-                <Calendar className="h-4 w-4" />
-                Schedule a Call
+                Schedule a Call →
               </Button>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Or send a note */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl mb-8">
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15] mb-8">
               Or send us a note.
             </h2>
-          </AnimatedSection>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="rounded-xl border border-border bg-card p-8"
-          >
+          <div className="rounded-sm border border-border bg-card p-8">
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <CheckCircle className="h-8 w-8" />
-                </div>
-                <h3 className="mb-2 text-2xl font-semibold">
+                <h3 className="mb-2 text-[length:var(--type-h3)]">
                   Thanks. We got your note.
                 </h3>
-                <p className="mb-8 text-muted-foreground">
+                <p className="mb-8 text-ink-soft">
                   We&apos;ll be in touch within one business day. If your problem 
                   is urgent, book directly above.
                 </p>
@@ -193,7 +178,7 @@ export default function ContactPage() {
                 <div className="grid gap-6 md:grid-cols-2">
                   {/* Name */}
                   <div>
-                    <label htmlFor="name" className="mb-2 block text-sm font-medium">
+                    <label htmlFor="name" className="meta mb-2 block">
                       Your name *
                     </label>
                     <input
@@ -202,10 +187,10 @@ export default function ContactPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full rounded-lg border bg-background px-4 py-3 transition-colors focus:outline-none focus:ring-1 ${
+                      className={`w-full rounded-sm border bg-background px-4 py-3 transition-colors duration-[var(--motion-fast)] focus:outline-none focus:ring-1 ${
                         errors.name
                           ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                          : "border-border focus:border-primary focus:ring-primary"
+                          : "border-border focus:border-foreground focus:ring-foreground"
                       }`}
                     />
                     {errors.name && (
@@ -215,7 +200,7 @@ export default function ContactPage() {
 
                   {/* Email */}
                   <div>
-                    <label htmlFor="email" className="mb-2 block text-sm font-medium">
+                    <label htmlFor="email" className="meta mb-2 block">
                       Your email *
                     </label>
                     <input
@@ -224,10 +209,10 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full rounded-lg border bg-background px-4 py-3 transition-colors focus:outline-none focus:ring-1 ${
+                      className={`w-full rounded-sm border bg-background px-4 py-3 transition-colors duration-[var(--motion-fast)] focus:outline-none focus:ring-1 ${
                         errors.email
                           ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                          : "border-border focus:border-primary focus:ring-primary"
+                          : "border-border focus:border-foreground focus:ring-foreground"
                       }`}
                     />
                     {errors.email && (
@@ -238,8 +223,8 @@ export default function ContactPage() {
 
                 {/* Company */}
                 <div>
-                  <label htmlFor="company" className="mb-2 block text-sm font-medium">
-                    Your company <span className="text-muted-foreground">(optional)</span>
+                  <label htmlFor="company" className="meta mb-2 block">
+                    Your company <span>(optional)</span>
                   </label>
                   <input
                     type="text"
@@ -247,16 +232,16 @@ export default function ContactPage() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-border bg-background px-4 py-3 transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full rounded-sm border border-border bg-background px-4 py-3 transition-colors duration-[var(--motion-fast)] focus:border-foreground focus:outline-none focus:ring-1 focus:ring-foreground"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-medium">
+                  <label htmlFor="message" className="meta mb-2 block">
                     What you&apos;re trying to do *
                   </label>
-                  <p className="mb-2 text-sm text-muted-foreground">
+                  <p className="mb-2 text-sm text-ink-soft">
                     One paragraph is fine. Be specific about the workflow, not the model.
                   </p>
                   <textarea
@@ -265,10 +250,10 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className={`w-full resize-none rounded-lg border bg-background px-4 py-3 transition-colors focus:outline-none focus:ring-1 ${
+                    className={`resize-none w-full rounded-sm border bg-background px-4 py-3 transition-colors duration-[var(--motion-fast)] focus:outline-none focus:ring-1 ${
                       errors.message
                         ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                        : "border-border focus:border-primary focus:ring-primary"
+                        : "border-border focus:border-foreground focus:ring-foreground"
                     }`}
                   />
                   {errors.message && (
@@ -278,8 +263,8 @@ export default function ContactPage() {
 
                 {/* Source */}
                 <div>
-                  <label htmlFor="source" className="mb-2 block text-sm font-medium">
-                    How did you hear about us? <span className="text-muted-foreground">(optional)</span>
+                  <label htmlFor="source" className="meta mb-2 block">
+                    How did you hear about us? <span>(optional)</span>
                   </label>
                   <input
                     type="text"
@@ -287,12 +272,12 @@ export default function ContactPage() {
                     name="source"
                     value={formData.source}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-border bg-background px-4 py-3 transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full rounded-sm border border-border bg-background px-4 py-3 transition-colors duration-[var(--motion-fast)] focus:border-foreground focus:outline-none focus:ring-1 focus:ring-foreground"
                   />
                 </div>
 
                 {submitError && (
-                  <div className="rounded-lg border border-red-500/50 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                  <div className="rounded-sm border border-red-500/50 bg-red-500/10 px-4 py-3 text-sm text-red-400">
                     {submitError}
                   </div>
                 )}
@@ -301,7 +286,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="gap-2 glow-cyan"
+                  className="gap-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -311,80 +296,73 @@ export default function ContactPage() {
                     </>
                   ) : (
                     <>
-                      <Send className="h-4 w-4" />
-                      Send
+                      Send →
                     </>
                   )}
                 </Button>
               </form>
             )}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Contact info */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AnimatedItem>
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <Mail className="h-5 w-5" />
-                </div>
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
+                  <p className="meta">Email</p>
                   <a
                     href="mailto:nvsbl@monospace.studio"
-                    className="font-medium transition-colors hover:text-primary"
+                    className="prose-link"
                   >
                     nvsbl@monospace.studio
                   </a>
                 </div>
               </div>
-            </AnimatedItem>
+            </div>
 
-            <AnimatedItem>
+            <div>
               <div>
-                <p className="text-sm text-muted-foreground mb-3">Connect</p>
-                <div className="flex gap-3">
+                <p className="meta mb-3">Connect</p>
+                <div className="flex gap-4">
                   <a
                     href="https://linkedin.com/in/derrybirkett"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-border transition-colors hover:border-primary/50 hover:text-primary"
+                    className="prose-link"
                   >
-                    <Linkedin className="h-5 w-5" />
-                    <span className="sr-only">LinkedIn</span>
+                    LinkedIn ↗
                   </a>
                   <a
                     href="https://twitter.com/derrybirkett"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-border transition-colors hover:border-primary/50 hover:text-primary"
+                    className="prose-link"
                   >
-                    <Twitter className="h-5 w-5" />
-                    <span className="sr-only">Twitter</span>
+                    Twitter ↗
                   </a>
                   <a
                     href="https://github.com/derrybirkett"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-border transition-colors hover:border-primary/50 hover:text-primary"
+                    className="prose-link"
                   >
-                    <Github className="h-5 w-5" />
-                    <span className="sr-only">GitHub</span>
+                    GitHub ↗
                   </a>
                 </div>
               </div>
-            </AnimatedItem>
+            </div>
 
-            <AnimatedItem>
+            <div>
               <div>
-                <p className="text-sm text-muted-foreground">Response time</p>
-                <p className="font-medium">Within one business day</p>
+                <p className="meta">Response time</p>
+                <p>Within one business day</p>
               </div>
-            </AnimatedItem>
-          </StaggerContainer>
+            </div>
+          </div>
         </div>
       </section>
     </main>

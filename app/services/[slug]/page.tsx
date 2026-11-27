@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, ArrowLeft, Compass, PenTool, Hammer, Package, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedSection, StaggerContainer, AnimatedItem } from "@/components/ui/motion";
 
 const servicesData = {
   strategy: {
-    icon: Compass,
     title: "Strategy",
     headline: "Decide what to build, what to buy, and what to orchestrate.",
     description:
@@ -47,7 +44,6 @@ const servicesData = {
       "This is not a slide deck about the future of AI. This is not a vendor's analyst report wearing a logo from your company. This is a working document your engineering leaders will reference for the next year.",
   },
   design: {
-    icon: PenTool,
     title: "Design",
     headline: "Model the work before the agents do it.",
     description:
@@ -87,7 +83,6 @@ const servicesData = {
       "This is not a UI agency that puts a chat box on top of an LLM. This is the design of the underlying system, the contract between the agent and the world.",
   },
   build: {
-    icon: Hammer,
     title: "Build",
     headline: "Ship middleware that doesn't break under real load.",
     description:
@@ -137,7 +132,6 @@ const servicesData = {
       "This is not a notebook with prompts in it. This is not a chat UI. This is production-grade software that happens to use models.",
   },
   products: {
-    icon: Package,
     title: "Products",
     headline: "Solutions we built once, properly. Now available off the shelf.",
     description:
@@ -200,109 +194,101 @@ export default async function ServicePage({
     notFound();
   }
 
-  const Icon = service.icon;
-
   return (
-    <div className="pt-24">
+    <div className="pt-[var(--space-8)]">
       {/* Back link */}
-      <div className="mx-auto max-w-4xl px-6 lg:px-8 py-8">
+      <div className="container-site pb-[var(--space-5)]">
         <Link
           href="/services"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="meta inline-flex items-center hover:text-foreground transition-colors duration-[var(--motion-fast)]"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          All Services
+          ← All Services
         </Link>
       </div>
 
       {/* Hero */}
-      <section className="pb-16 lg:pb-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <Icon className="h-8 w-8" />
-            </div>
-            <h1 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl">
+      <section className="pb-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h1 className="text-[length:var(--type-h1)] leading-[1.15]">
               {service.title}
             </h1>
-            <p className="mt-4 text-xl text-primary font-medium">
+            <p className="mt-4 text-xl text-ink-soft">
               {service.headline}
             </p>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 text-lg text-ink-soft leading-relaxed max-w-[var(--grid-prose-max)]">
               {service.description}
             </p>
-            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-4 text-lg text-ink-soft leading-relaxed max-w-[var(--grid-prose-max)]">
               {service.intro}
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* What you get */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">What you get</h2>
-          </AnimatedSection>
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">What you get</h2>
+          </div>
 
-          <StaggerContainer className="mt-8 flex flex-col gap-6">
+          <div className="mt-8 flex flex-col gap-6">
             {service.deliverables.map((item) => (
-              <AnimatedItem key={item.title}>
-                <div className="flex gap-4">
-                  <CheckCircle2 className="h-6 w-6 shrink-0 text-primary mt-0.5" />
+              <div key={item.title}>
+                <div className="border-t border-border pt-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground">
+                    <h3 className="text-[length:var(--type-h3)] text-foreground">
                       {item.title}
                     </h3>
-                    <p className="mt-1 text-muted-foreground leading-relaxed">
+                    <p className="mt-1 text-ink-soft leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
-              </AnimatedItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
       {/* Engagement shape */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">Engagement shape</h2>
-            <div className="mt-6 rounded-xl border border-border bg-card p-6">
-              <p className="text-primary font-medium">{service.duration}</p>
-              <p className="mt-2 text-muted-foreground leading-relaxed">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">Engagement shape</h2>
+            <div className="mt-6 rounded-sm border border-border bg-card p-6">
+              <p className="meta">{service.duration}</p>
+              <p className="mt-2 text-ink-soft leading-relaxed">
                 {service.team}
               </p>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* What this is not */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">What this is not</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">What this is not</h2>
+            <p className="mt-4 text-ink-soft leading-relaxed">
               {service.notThis}
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <Button asChild size="lg" className="glow-cyan">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <Button asChild size="lg">
               <Link href="/contact">
-                Book a discovery call
-                <ArrowRight className="ml-2 h-4 w-4" />
+                Book a discovery call →
               </Link>
             </Button>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

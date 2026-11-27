@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { AnimatedSection } from "@/components/ui/motion";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -35,26 +34,26 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <div className="pt-24">
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h1 className="text-4xl font-bold tracking-tight">Terms of Service</h1>
-            <p className="mt-4 text-sm text-muted-foreground">
+    <div className="pt-[var(--space-8)]">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h1 className="text-[length:var(--type-h1)] leading-[1.15]">Terms of Service</h1>
+            <p className="meta mt-4">
               Last updated: May 2026
             </p>
-          </AnimatedSection>
+          </div>
 
-          <div className="mt-12 flex flex-col gap-10">
+          <div className="mt-12 flex max-w-[var(--grid-prose-max)] flex-col gap-10">
             {sections.map((section) => (
-              <AnimatedSection key={section.heading}>
-                <h2 className="text-lg font-semibold text-foreground">
+              <div key={section.heading}>
+                <h2 className="text-[length:var(--type-h3)] text-foreground">
                   {section.heading}
                 </h2>
-                <p className="mt-3 text-muted-foreground leading-relaxed">
+                <p className="mt-3 text-ink-soft leading-relaxed">
                   {section.body}
                 </p>
-              </AnimatedSection>
+              </div>
             ))}
           </div>
         </div>

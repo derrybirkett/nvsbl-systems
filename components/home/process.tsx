@@ -1,7 +1,3 @@
-"use client";
-
-import { AnimatedSection, StaggerContainer, AnimatedItem } from "@/components/ui/motion";
-
 const steps = [
   {
     number: "01",
@@ -31,39 +27,26 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="py-24 lg:py-32 bg-secondary/30">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection className="text-center">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
-            How We Work
-          </h2>
-          <p className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            The Double Diamond, applied to agents.
-          </p>
-        </AnimatedSection>
+    <section className="py-[var(--space-9)] bg-paper-pure">
+      <div className="container-site">
+        <h2 className="meta">How We Work</h2>
+        <p className="mt-4 text-[length:var(--type-h2)] font-headline leading-[1.15] text-balance">
+          The Double Diamond, applied to agents.
+        </p>
 
-        <StaggerContainer className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, idx) => (
-            <AnimatedItem key={step.number}>
-              <div className="relative">
-                {/* Connector line (hidden on last item) */}
-                {idx < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-border to-transparent" />
-                )}
-
-                <div className="text-4xl font-bold text-primary/20 font-mono">
-                  {step.number}
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-foreground">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </AnimatedItem>
+        <div className="mt-[var(--space-7)] grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step) => (
+            <div key={step.number} className="border-t border-border pt-4">
+              <div className="meta">{step.number}</div>
+              <h3 className="mt-4 text-[length:var(--type-h3)] text-foreground">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-muted-foreground">
+                {step.description}
+              </p>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );
