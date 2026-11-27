@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedSection, StaggerContainer, AnimatedItem } from "@/components/ui/motion";
 
 export const metadata: Metadata = {
   title: "Approach — How NVSBL builds agentic systems",
@@ -43,29 +41,29 @@ const whatWeDont = [
 
 export default function ApproachPage() {
   return (
-    <div className="pt-24">
+    <div className="pt-[var(--space-8)]">
       {/* Hero */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h1 className="text-[length:var(--type-h1)] leading-[1.15]">
               We build the layer underneath the agents.
             </h1>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Main content */}
-      <section className="pb-16 lg:pb-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection className="prose prose-lg prose-invert max-w-none">
-            <p className="text-muted-foreground leading-relaxed">
+      <section className="pb-[var(--space-9)]">
+        <div className="container-site">
+          <div className="max-w-[var(--grid-prose-max)] flex flex-col gap-6">
+            <p className="text-ink-soft leading-relaxed">
               The agentic era has a discipline problem. Most of what&apos;s being shipped 
               today is a notebook with prompts in it, draped in marketing copy. It demos 
               beautifully. It collapses under contact with a real organization.
             </p>
             
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-ink-soft leading-relaxed">
               We&apos;ve been doing solution design for twenty-five years. The work 
               hasn&apos;t actually changed. The hard parts of agentic systems are the same 
               hard parts that always existed in distributed systems: authentication that 
@@ -74,118 +72,117 @@ export default function ApproachPage() {
               before users do, and controls your operations team can hold in their head.
             </p>
             
-            <p className="mt-8 text-foreground font-medium text-xl">
+            <p className="mt-8 text-foreground text-xl">
               The model is the easy part. The model is somebody else&apos;s product.
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* What we mean by middleware */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">
               What we mean by middleware
             </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
+            <p className="mt-6 text-ink-soft leading-relaxed">
               Most agentic agencies don&apos;t build this layer. They build a chat UI on 
               top of an LLM and call it transformation. We build the layer that makes 
               the chat UI worth using — or that makes the chat UI unnecessary, because 
               the agent has been integrated into the actual workflow.
             </p>
-            <p className="mt-4 text-foreground font-medium">
+            <p className="mt-4 text-foreground">
               The best AI is invisible because the best AI doesn&apos;t have to announce 
               itself. It just makes the work shorter.
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Double Diamond */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">
               The Double Diamond, applied to agents
             </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
+            <p className="mt-6 text-ink-soft leading-relaxed">
               Every engagement walks four phases. We didn&apos;t invent the Double Diamond — 
               the British Design Council did, in 2005 — but it maps cleanly onto the 
               agentic stack and we apply it without ceremony.
             </p>
-          </AnimatedSection>
+          </div>
 
-          <StaggerContainer className="mt-12 flex flex-col gap-8">
+          <div className="mt-12 flex flex-col gap-8">
             {doubleDiamond.map((item, idx) => (
-              <AnimatedItem key={item.phase}>
+              <div key={item.phase}>
                 <div className="flex gap-6">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                  <div className="meta w-8 shrink-0 pt-1">
                     {idx + 1}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground">
+                    <h3 className="text-[length:var(--type-h3)] text-foreground">
                       {item.phase}
                     </h3>
-                    <p className="mt-2 text-muted-foreground leading-relaxed">
+                    <p className="mt-2 text-ink-soft leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
-              </AnimatedItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
 
-          <AnimatedSection className="mt-8">
-            <p className="text-muted-foreground leading-relaxed">
+          <div className="mt-8">
+            <p className="text-ink-soft leading-relaxed">
               The diamond is two diamonds because it diverges and converges twice — 
               once on the problem, once on the solution. Skipping the divergent halves 
               is how teams end up with agents that solve the wrong thing very efficiently.
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* What we don't do */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">What we don&apos;t do</h2>
-          </AnimatedSection>
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">What we don&apos;t do</h2>
+          </div>
 
-          <StaggerContainer className="mt-8 flex flex-col gap-4">
+          <div className="mt-8 flex flex-col gap-4">
             {whatWeDont.map((item) => (
-              <AnimatedItem key={item}>
-                <p className="text-muted-foreground leading-relaxed">
+              <div key={item}>
+                <p className="text-ink-soft leading-relaxed">
                   {item}
                 </p>
-              </AnimatedItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
       {/* What you can expect */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl">What you can expect</h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div>
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15]">What you can expect</h2>
+            <p className="mt-6 text-ink-soft leading-relaxed">
               A team that has been doing this longer than the term &quot;agentic&quot; has existed. 
               A methodology that produces predictable, defensible work product. A bias 
               toward shipping into the systems you already trust, rather than introducing 
               new ones. And a willingness to tell you when an agent isn&apos;t the right answer.
             </p>
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection className="mt-12">
-            <Button asChild size="lg" className="glow-cyan">
+          <div className="mt-12">
+            <Button asChild size="lg">
               <Link href="/contact">
-                Book a discovery call
-                <ArrowRight className="ml-2 h-4 w-4" />
+                Book a discovery call →
               </Link>
             </Button>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

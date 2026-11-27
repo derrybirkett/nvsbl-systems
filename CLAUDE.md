@@ -44,18 +44,16 @@ Case study pages follow the **Double Diamond** structure (Discover → Define �
 - `components/layout/` — `Header` and `Footer`, both Server Components except Header is `'use client'` (scroll state + mobile menu)
 - `components/home/` — Section components assembled on `app/page.tsx`
 - `components/ui/` — shadcn/ui components (new-york style) plus:
-  - `motion.tsx` — `AnimatedSection`, `StaggerContainer`, `AnimatedItem` wrappers around Framer Motion; these are `'use client'` and safe to import from Server Components
-- `lib/animations.ts` — Framer Motion `Variants` presets (`fadeInUp`, `staggerContainer`, etc.) consumed by `motion.tsx`
+  - `motion.tsx` — `AnimatedSection`, `StaggerContainer`, `AnimatedItem` are now plain `div` wrappers (the design system has no entrance animations). Don't add new uses; remove them as pages are rewritten.
+- `components/layout/theme-toggle.tsx` — light/dark toggle in the footer; pairs with the inline theme script in `app/layout.tsx`
 
 ### Styling
 
-Tailwind v4 (`@import "tailwindcss"` in `app/globals.css` — no `tailwind.config.js`). Dark-only theme; `--background` is near-black, `--primary` is cyan (`oklch(0.75 0.18 195)`).
+**Read `DESIGN.md` first.** NVSBL.SYSTEMS is a sibling of monospace.studio and shares its design system: PT Mono for body and labels, Libre Baskerville for H1/H2, ink on paper, hairlines instead of shadows, no icons except the arrows `↗ → ↑ ↓`, no decorative motion. The NVSBL accent is teal (`text-brand`), used sparingly. shadcn's `primary` maps to ink.
 
-Custom CSS utilities defined in `app/globals.css`:
-- `.gradient-text` — cyan gradient applied via `-webkit-background-clip`
-- `.glow-cyan` / `.glow-secondary` — box-shadow glow effects for buttons/CTAs
-- `.bg-grid` — subtle grid background pattern
-- `.gradient-border` — pseudo-element gradient border
+Tailwind v4 (`@import "tailwindcss"` in `app/globals.css` — no `tailwind.config.js`). Light and dark follow `prefers-color-scheme`; the footer toggle overrides it via `data-theme` on `<html>`. The `dark:` variant honours both.
+
+Custom utilities in `app/globals.css`: `.container-site`, `.meta`, `.pull`, `.prose-link`, `.pill` (see `DESIGN.md`). Spacing and type tokens are CSS variables (`--space-*`, `--type-*`), used as `py-[var(--space-9)]`, `text-[length:var(--type-h2)]`.
 
 Use `cn()` from `@/lib/utils` for conditional class merging. Path alias `@/` maps to the project root.
 

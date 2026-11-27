@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedSection } from "@/components/ui/motion";
 
 const caseStudies = {
   "nvsbl-dev": {
@@ -182,266 +180,257 @@ export default async function CaseStudyPage({
   }
 
   return (
-    <div className="pt-24">
+    <div className="pt-[var(--space-8)]">
       {/* Back link */}
-      <div className="mx-auto max-w-4xl px-6 lg:px-8 py-8">
+      <div className="container-site pb-[var(--space-5)]">
         <Link
           href="/work"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="meta inline-flex items-center hover:text-foreground transition-colors duration-[var(--motion-fast)]"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          All Work
+          ← All Work
         </Link>
       </div>
 
       {/* Hero */}
-      <section className="pb-16 lg:pb-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
+      <section className="pb-[var(--space-9)]">
+        <div className="container-site">
+          <div className="max-w-[var(--grid-prose-max)]">
             <div className="flex items-center gap-3 mb-4">
               <div>
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                <h1 className="text-[length:var(--type-h1)] leading-[1.15]">
                   {study.title}
                 </h1>
-                {"subtitle" in study && study.subtitle && (
-                  <p className="text-lg text-muted-foreground">
-                    {study.subtitle}
-                  </p>
-                )}
               </div>
-              <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">
+              <span className="pill" data-active={study.status === "Live"}>
                 {study.status}
               </span>
             </div>
-            <p className="text-xl text-primary font-medium">
+            <p className="text-xl text-ink-soft">
               {study.headline}
             </p>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 text-lg text-ink-soft leading-relaxed">
               {study.outcome}
             </p>
             <div className="mt-8 flex gap-4">
-              <Button asChild className="glow-cyan">
+              <Button asChild>
                 <a href={study.productUrl} target="_blank" rel="noopener noreferrer">
-                  Visit product
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  Visit product ↗
                 </a>
               </Button>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Discover */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl text-primary mb-8">
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div className="max-w-[var(--grid-prose-max)]">
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15] mb-8">
               {study.sections.discover.title}
             </h2>
             {study.sections.discover.content.map((p, i) => (
-              <p key={i} className="text-muted-foreground leading-relaxed mb-4">
+              <p key={i} className="text-ink-soft leading-relaxed mb-4">
                 {p}
               </p>
             ))}
             <ul className="mt-6 space-y-3">
               {study.sections.discover.bullets.map((bullet, i) => (
-                <li key={i} className="flex gap-3 text-muted-foreground">
-                  <span className="text-primary shrink-0">•</span>
+                <li key={i} className="flex gap-3 text-ink-soft">
+                  <span className="text-muted-foreground shrink-0">—</span>
                   {bullet}
                 </li>
               ))}
             </ul>
-            <blockquote className="mt-8 border-l-2 border-primary pl-6 py-2">
-              <p className="text-lg text-foreground italic">
+            <blockquote className="mt-8 border-l border-foreground pl-6 py-2">
+              <p className="pull">
                 {study.sections.discover.quote}
               </p>
-              <cite className="mt-2 block text-sm text-muted-foreground">
+              <cite className="meta mt-2 block not-italic">
                 — {study.sections.discover.quoteAuthor}
               </cite>
             </blockquote>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Define */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl text-primary mb-8">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div className="max-w-[var(--grid-prose-max)]">
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15] mb-8">
               {study.sections.define.title}
             </h2>
             <div className="space-y-6">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   The problem, sharpened
                 </h3>
-                <p className="text-foreground font-medium">
+                <p className="text-foreground">
                   {study.sections.define.problem}
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Success metric
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-ink-soft leading-relaxed">
                   {study.sections.define.metric}
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Scope boundaries
                 </h3>
                 <ul className="space-y-2">
                   {study.sections.define.boundaries.map((b, i) => (
-                    <li key={i} className="flex gap-3 text-muted-foreground">
-                      <span className="text-primary shrink-0">•</span>
+                    <li key={i} className="flex gap-3 text-ink-soft">
+                      <span className="text-muted-foreground shrink-0">—</span>
                       {b}
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Riskiest assumption
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-ink-soft leading-relaxed">
                   {study.sections.define.risk}
                 </p>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Design */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl text-primary mb-8">
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div className="max-w-[var(--grid-prose-max)]">
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15] mb-8">
               {study.sections.design.title}
             </h2>
             <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Topology
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-ink-soft leading-relaxed">
                   {study.sections.design.topology}
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Prompt and policy decisions
                 </h3>
                 <ul className="space-y-2">
                   {study.sections.design.decisions.map((d, i) => (
-                    <li key={i} className="flex gap-3 text-muted-foreground">
-                      <span className="text-primary shrink-0">•</span>
+                    <li key={i} className="flex gap-3 text-ink-soft">
+                      <span className="text-muted-foreground shrink-0">—</span>
                       {d}
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Eval design
                 </h3>
                 <ul className="space-y-2">
                   {study.sections.design.evals.map((e, i) => (
-                    <li key={i} className="flex gap-3 text-muted-foreground">
-                      <span className="text-primary shrink-0">•</span>
+                    <li key={i} className="flex gap-3 text-ink-soft">
+                      <span className="text-muted-foreground shrink-0">—</span>
                       {e}
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Trade-offs documented
                 </h3>
                 <ul className="space-y-2">
                   {study.sections.design.tradeoffs.map((t, i) => (
-                    <li key={i} className="flex gap-3 text-muted-foreground">
-                      <span className="text-primary shrink-0">•</span>
+                    <li key={i} className="flex gap-3 text-ink-soft">
+                      <span className="text-muted-foreground shrink-0">—</span>
                       {t}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Deliver */}
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl font-bold sm:text-3xl text-primary mb-8">
+      <section className="py-[var(--space-9)]">
+        <div className="container-site">
+          <div className="max-w-[var(--grid-prose-max)]">
+            <h2 className="text-[length:var(--type-h2)] leading-[1.15] mb-8">
               {study.sections.deliver.title}
             </h2>
             <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   Stack
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-ink-soft leading-relaxed">
                   {study.sections.deliver.stack}
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <h3 className="meta mb-2">
                   What we measure in production
                 </h3>
                 <ul className="space-y-2">
                   {study.sections.deliver.metrics.map((m, i) => (
-                    <li key={i} className="flex gap-3 text-muted-foreground">
-                      <span className="text-primary shrink-0">•</span>
+                    <li key={i} className="flex gap-3 text-ink-soft">
+                      <span className="text-muted-foreground shrink-0">—</span>
                       {m}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <AnimatedSection className="flex flex-col gap-6">
-            <div className="rounded-xl border border-border bg-card p-8">
-              <h3 className="text-xl font-semibold mb-2">
+      <section className="py-[var(--space-9)] border-y border-border bg-paper-pure">
+        <div className="container-site">
+          <div className="flex max-w-[var(--grid-prose-max)] flex-col gap-6">
+            <div className="rounded-sm border border-border bg-card p-8">
+              <h3 className="text-[length:var(--type-h3)] mb-2">
                 Use {study.title} on your team
               </h3>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-ink-soft mb-4">
                 Free to try. Pricing scales with usage.
               </p>
-              <Button asChild className="glow-cyan">
+              <Button asChild>
                 <a href={study.productUrl} target="_blank" rel="noopener noreferrer">
-                  Visit {study.productUrl.replace("https://", "")}
-                  <ExternalLink className="ml-2 h-4 w-4" />
+                  Visit {study.productUrl.replace("https://", "")} ↗
                 </a>
               </Button>
             </div>
 
-            <div className="rounded-xl border border-border bg-card p-8">
-              <h3 className="text-xl font-semibold mb-2">
+            <div className="rounded-sm border border-border bg-card p-8">
+              <h3 className="text-[length:var(--type-h3)] mb-2">
                 Have a problem like this we should build for?
               </h3>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-ink-soft mb-4">
                 If you&apos;ve got a recurring pain in your operation that you wish 
                 was solved off-the-shelf, we&apos;d like to hear about it.
               </p>
               <Button asChild variant="outline">
                 <Link href="/contact">
-                  Talk to us
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Talk to us →
                 </Link>
               </Button>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

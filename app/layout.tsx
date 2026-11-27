@@ -1,21 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { PT_Mono, Libre_Baskerville } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
-const inter = Inter({
+const ptMono = PT_Mono({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-pt-mono",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const libreBaskerville = Libre_Baskerville({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-libre-baskerville",
   display: "swap",
 });
+
+// Applies a theme chosen with the footer toggle before first paint. Keep in sync with
+// components/layout/theme-toggle.tsx.
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
 
 export const metadata: Metadata = {
   title: {
@@ -71,7 +78,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a14",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -84,8 +94,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} bg-background`}
+      className={`${ptMono.variable} ${libreBaskerville.variable} bg-background`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-sans antialiased">
         <Header />
         <main>{children}</main>
